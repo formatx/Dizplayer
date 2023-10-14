@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  bot:
+    build: .
+    environment:
+      DISCORD_TOKEN: ${DISCORD_TOKEN}
+      BOT_OWNER_USER_NAME: ${BOT_OWNER_USER_NAME}
+      PYTHONPATH: "."
+    command: python3 Dizplayer.py
+  mongodb:
+    image: mongo:6.0.3
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+volumes:
+  mongo_data:
